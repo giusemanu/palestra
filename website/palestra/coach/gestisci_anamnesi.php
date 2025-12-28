@@ -107,6 +107,7 @@
                                     <th>Muscolo</th>
                                     <th>Magra</th>
                                     <th>Grassa</th>
+                                    <th>BMI</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -118,6 +119,19 @@
                                         <td class="text-nowrap"><?=htmlspecialchars($a['massa_muscolare'])?> kg</td>
                                         <td class="text-nowrap"><?=htmlspecialchars($a['massa_magra'])?> %</td>
                                         <td class="text-nowrap"><?=htmlspecialchars($a['massa_grassa'])?> %</td>
+                                        <td class="text-nowrap">
+                                            <?php 
+                                                $bmi = ($a['altezza'] > 0) ? $a['peso'] / pow($a['altezza']/100, 2) : 0;
+                                                $classe = match(true) {
+                                                    $bmi == 0    => '',
+                                                    $bmi < 18.5  => 'bmi-sottopeso',
+                                                    $bmi < 25    => 'bmi-normopeso',
+                                                    $bmi < 30    => 'bmi-sovrappeso',
+                                                    default      => 'bmi-obesita',
+                                                };
+                                            ?>
+                                            <span class="<?=$classe?>"><?=$bmi ? number_format($bmi, 1) : 'N/D'?></span>
+                                        </td>
                                     </tr>
                                 <?php }?>
                             </tbody>

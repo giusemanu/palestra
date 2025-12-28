@@ -377,3 +377,29 @@ td, th {
     float: right;
     font-size: 20px;
 }
+
+/* --- Stili per la colonna BMI --- */
+
+/* Sottopeso - Giallo/Arancio (attenzione) */
+.bmi-sottopeso {
+    color: #fbc02d; 
+    font-weight: 600;
+}
+
+/* Normopeso - Verde (stato ottimale) */
+.bmi-normopeso {
+    color: #2e7d32;
+    font-weight: 600;
+}
+
+/* Sovrappeso - Arancione (attenzione) */
+.bmi-sovrappeso {
+    color: #ef6c00;
+    font-weight: 600;
+}
+
+/* Obesità - Rosso (allerta) */
+.bmi-obesita {
+    color: #c62828;
+    font-weight: 700; /* Leggermente più spesso per risaltare */
+}
