@@ -49,7 +49,7 @@
                 <p class="mb-20">Compila tutti i campi per aggiornare i dati biometrici.</p>
 
                 <form action="/palestra/actions/add_anamnesi.php" method="POST">
-                    <input type="hidden" name="id_utente" value="<?= $id_utente ?>">
+                    <input type="hidden" name="id_utente" value="<?=$id_utente?>">
 
                     <div class="form-group">
                         <label class="form-label" for="data_anamnesi">Data Misurazione</label>
@@ -59,11 +59,11 @@
                     <div class="form-row">
                         <div class="form-group form-col">
                             <label class="form-label" for="peso">Peso (kg)</label>
-                            <input type="number" id="peso" name="peso" step="0.01" min="0" class="form-input" placeholder="0.00" required>
+                            <input type="number" id="peso" name="peso" step="0.01" min="1" class="form-input" placeholder="0.00" required>
                         </div>
                         <div class="form-group form-col">
                             <label class="form-label" for="altezza">Altezza (cm)</label>
-                            <input type="number" id="altezza" name="altezza" step="0.01" min="0" class="form-input" placeholder="0.00" required>
+                            <input type="number" id="altezza" name="altezza" step="0.01" min="1" class="form-input" placeholder="0.00" required>
                         </div>
                     </div>
 
