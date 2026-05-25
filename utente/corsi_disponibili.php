@@ -10,6 +10,10 @@
         $stmt = $pdo->prepare("SELECT corso FROM partecipa WHERE utente = :id_utente");
         $stmt->execute([':id_utente' => $id_utente]);
         $i_miei_corsi_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+        $stmt = $pdo->prepare("SELECT COUNT(*) FROM abbonamento WHERE utente = :id_utente AND stato = 'Attivo' AND data_scadenza >= CURDATE()");
+        $stmt->execute([':id_utente' => $id_utente]);
+        $ha_abbonamento = ($stmt->fetchColumn() > 0);
     }catch(PDOException $e){
         redirect("/palestra/utente/dashboard.php?error=errore_db");
     }
@@ -28,6 +32,12 @@
             <p>Consulta l'elenco dei corsi attivi e prenota il tuo posto.</p>
         </div>        
         
+        <?php if(!$ha_abbonamento){ ?>
+            <div class="feedback-box error-box">
+                ⚠️ Attenzione: Il tuo abbonamento risulta scaduto o assente. Non puoi iscriverti o disiscriverti ai corsi finché non rinnovi la tua quota in segreteria.
+            </div>
+        <?php } ?>
+        
         <?php if(count($elenco_corsi) > 0){?>
             
             <table>
@@ -45,10 +55,10 @@
                         ?>
                         <tr>
                             <td>
-                                <strong style="font-size: 1.1rem; color: #333;">
+                                <strong>
                                     <?=htmlspecialchars($c['nome_corso'])?>
                                 </strong>
-                                </td>
+                            </td>
                             
                             <td>
                                 <?php if($iscritto){?>
@@ -59,20 +69,18 @@
                             </td>
 
                             <td>
-                                <?php if($iscritto){?>
-                                    
+                                <?php if(!$ha_abbonamento){ ?>
+                                    <span class="status-badge status-suspended">Bloccato 🔒</span>
+                                <?php }elseif($iscritto){?>
                                     <form action="/palestra/actions/cancella_iscrizione.php" method="POST">
                                         <input type="hidden" name="id_corso" value="<?=$c['id_corso']?>">
                                         <button type="submit" class="btn btn-danger">Annulla</button>
                                     </form>
-
                                 <?php }else{?>
-                                    
                                     <form action="/palestra/actions/prenota_corso.php" method="POST">
                                         <input type="hidden" name="id_corso" value="<?=$c['id_corso']?>">
                                         <button type="submit" class="btn">Prenota</button>
                                     </form>
-                                    
                                 <?php }?>
                             </td>
                         </tr>

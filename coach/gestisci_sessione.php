@@ -2,8 +2,8 @@
     require_once __DIR__ . "/../config/db_conn.php";
     require_once __DIR__ . "/../includes/functions.php";
     check_login('coach');
-    $id_scheda = (int)$_GET['id_scheda'];
-    $id_coach = (int)$_SESSION['id_coach'];
+	$id_scheda = (int)($_GET['id_scheda'] ?? $_GET['id'] ?? 0);
+	$id_coach = (int)$_SESSION['id_coach'];
     if($id_scheda <= 0){
         redirect("dashboard.php");
     }

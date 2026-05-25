@@ -8,7 +8,7 @@
         $id_utente = (int)$_POST['id_utente'];
         $data_inizio = trim($_POST['data_inizio']);
         $data_fine = trim($_POST['data_fine']);
-        if(!empty($id_scheda) && !empty($id_utente) && |empty($data_inizio) && !empty($data_fine)){
+        if(!empty($id_scheda) && !empty($id_utente) && !empty($data_inizio) && !empty($data_fine)){
             if($data_fine < $data_inizio){
                 redirect("/palestra/coach/modifica_scheda.php?id_utente=$id_utente&error=date_invalide");
             }else{

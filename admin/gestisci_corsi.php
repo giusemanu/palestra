@@ -55,7 +55,7 @@
                     <tbody>
                         <?php foreach($lista_corsi as $co){ ?>
                             <tr>
-                                <td class="text-left text-id">
+								<td class="text-left text-id"><?= htmlspecialchars($co['id_corso']) ?></td>
                                 <td class="text-left"><strong><?= htmlspecialchars($co['nome_corso']) ?></strong></td>
                                 <td class="text-center">
                                     <form action="/palestra/actions/delete_admin.php" method="POST">
@@ -63,6 +63,7 @@
                                         <input type="hidden" name="entita" value="corso">
                                         <button type="submit" class="btn btn-danger btn-sm">🗑️ Elimina</button>
                                     </form>
+                                </td>
                                 </td>
                             </tr>
                         <?php } ?>

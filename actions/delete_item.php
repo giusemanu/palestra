@@ -5,8 +5,8 @@
     if($_SERVER['REQUEST_METHOD']==='POST'){ 
         $id = (int)$_POST['id']; 
         $entita = trim($_POST['entita']);
-        $redirect_id = (int)$_POST['redirect_id'];
-        if($id <= 0 || empty($entita)){
+		$redirect_id = isset($_POST['redirect_id']) ? (int)$_POST['redirect_id'] : 0;
+		if($id <= 0 || empty($entita)){
             redirect("/palestra/coach/dashboard.php?error=dati_invalidi");
         }
         $tabella = '';
