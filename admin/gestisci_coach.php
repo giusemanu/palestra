@@ -91,7 +91,7 @@
                                 <td class="text-nowrap"><?= htmlspecialchars($c['telefono']) ?></td>
                                 <td><?= htmlspecialchars($c['email']) ?></td>
                                 <td class="text-center">
-                                    <form action="/palestra/actions/delete_item_admin.php" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo coach? Questa azione imposterà a NULL il riferimento nei suoi atleti assegnati.');">
+                                    <form action="/palestra/actions/delete_admin.php" method="POST">
                                         <input type="hidden" name="id" value="<?= $c['id_coach'] ?>">
                                         <input type="hidden" name="entita" value="coach">
                                         <button type="submit" class="btn btn-danger btn-sm">🗑️ Licenzia</button>

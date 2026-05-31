@@ -61,8 +61,7 @@
                 </div>
                 <div class="form-group form-col">
                     <label class="form-label" for="data_nascita">Data di Nascita</label>
-                    <input type="date" id="data_nascita" name="data_nascita" class="form-input" required>
-                </div>
+					<input type="date" name="data_nascita" id="data_nascita" class="form-input" max="<?= date('Y-m-d') ?>" required>                </div>
             </div>
 
             <div class="form-row">
@@ -114,11 +113,17 @@
                                 <td class="text-nowrap"><?= htmlspecialchars($u['telefono']) ?></td>
                                 <td><?= htmlspecialchars($u['email']) ?></td>
                                 <td>
-                                    <?php if(!empty($u['coach'])){ 
-                                        echo htmlspecialchars($u['coach_cognome'] . " " . $u['coach_nome']);
-                                    } else { ?>
-                                        <span class="text-muted" style="font-style: italic;">Non assegnato</span>
-                                    <?php } ?>
+                                    <form action="/palestra/actions/update_coach_utente.php" method="POST" class="form-update-coach">
+                                        <input type="hidden" name="id_utente" value="<?= $u['id_utente'] ?>">
+                                        <select name="id_coach" onchange="this.form.submit()" class="form-input">
+                                            <option value="">-- Nessun Coach --</option>
+                                            <?php foreach($elenco_coach as $c): ?>
+                                                <option value="<?= $c['id_coach'] ?>" <?= ($u['coach'] == $c['id_coach']) ? 'selected' : '' ?>>
+                                                    <?= htmlspecialchars($c['cognome'] . ' ' . $c['nome']) ?>
+                                                </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </form>
                                 </td>
                                 <td class="text-center">
                                     <form action="/palestra/actions/delete_admin.php" method="POST">

@@ -70,50 +70,6 @@
             </div>
         <?php }?>
     </div>
-
-
-    <div class="content-box mt-40">
-        <h3>➕ Registra Nuovo Utente</h3>
-        <p>Compila i dati per aggiungere un nuovo atleta al tuo team.</p>
-
-        <form action="/palestra/actions/registra_utente.php" method="POST">
-            
-            <div class="form-row">
-                <div class="form-group form-col">
-                    <label class="form-label" for="nome">Nome</label>
-                    <input type="text" id="nome" name="nome" class="form-input" required>
-                </div>
-                <div class="form-group form-col">
-                    <label class="form-label" for="cognome">Cognome</label>
-                    <input type="text" id="cognome" name="cognome" class="form-input" required>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group form-col">
-                    <label class="form-label" for="email">Email</label>
-                    <input type="email" id="email" name="email" class="form-input" required>
-                </div>
-                <div class="form-group form-col">
-                    <label class="form-label" for="telefono">Telefono</label>
-                    <input type="text" id="telefono" name="telefono" class="form-input" required>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group form-col">
-                    <label class="form-label" for="password">Password Iniziale</label>
-                    <input type="password" id="password" name="password" class="form-input" required>
-                </div>
-                <div class="form-group form-col">
-                    <label class="form-label" for="data_nascita">Data di Nascita</label>
-                    <input type="date" id="data_nascita" name="data_nascita" class="form-input" required>
-                </div>
-            </div>
-
-            <button type="submit" class="btn">Salva Utente</button>
-        </form>
-    </div>
 </div>
 
 <?php require_once __DIR__."/../includes/footer.php"; ?>

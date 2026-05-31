@@ -420,3 +420,21 @@ td, th {
     transform: none !important;
     box-shadow: none !important;
 }
+
+/* Compatta leggermente la tabella per far stare più colonne */
+.table-responsive table th, 
+.table-responsive table td {
+    padding: 6px 8px; /* Riduciamo lo spazio vuoto tra una colonna e l'altra */
+    font-size: 0.90em; /* Testo impercettibilmente più piccolo */
+}
+
+/* Tendina coach: si adatta senza sformare la tabella */
+.form-update-coach .form-input {
+    width: 100%;
+    min-width: 130px; 
+    max-width: 200px; /* Blocca l'espansione eccessiva */
+    text-overflow: ellipsis; /* Se il nome è troppo lungo mette i "..." */
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+}

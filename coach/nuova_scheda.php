@@ -46,7 +46,7 @@
             <div class="form-group">
                 <label class="form-label" for="data_inizio">Data Inizio:</label>
                 <input type="date" id="data_inizio" name="data_inizio" class="form-input" 
-                       value="<?=date('Y-m-d')?>" required>
+                       value="<?=date('Y-m-d')?>" max="<?= date('Y-m-d') ?>" required>
             </div>
 
             <div class="form-group">

@@ -52,7 +52,9 @@
                 case 'sessione_non_trovata': $messaggio = "La sessione di allenamento non esiste."; break;
                 case 'impossibile_cancellare_dati_collegati': $messaggio = "Impossibile eliminare: ci sono dati collegati a questo elemento."; break;
                 case 'date_invalide': $messaggio = "La data di fine scheda non può essere antecedente a quella d'inizio"; break;
-                case 'data_futura': $messaggio = "La data di nascita non può essere nel futuro!"; break;
+                case 'data_futura': $messaggio = "La data di nascita non può essere nel futuro."; break;
+				case 'operazione_non_permessa': $messaggio = "Operazione non consentita o entità sconosciuta."; break;
+                case 'abbonamento_scaduto': $messaggio = "Impossibile procedere: abbonamento scaduto."; break;
                 default: $messaggio = "Errore imprevisto."; break;
             }
             echo '<div class="error-msg">'.$messaggio.'</div>';
@@ -73,6 +75,10 @@
                 case 'esercizio_aggiunto': $messaggio = "Esercizio inserito nella sessione."; break;
                 case 'esercizio_creato': $messaggio = "Esercizio aggiunto all'archivio globale."; break;
                 case 'anamnesi_inserita': $messaggio = "Dati biometrici registrati correttamente!"; break;
+				case 'coach_aggiornato': $messaggio = "Coach assegnato all'atleta con successo."; break;
+                case 'coach_registrato': $messaggio = "Nuovo coach inserito nello staff!"; break;
+                case 'corso_creato': $messaggio = "Nuovo corso inserito nel palinsesto!"; break;
+                case 'abbonamento_aggiunto': $messaggio = "Abbonamento registrato e attivato."; break;
                 default: $messaggio = htmlspecialchars($_GET['msg']); break;
             }
             echo '<div class="success-msg">'.$messaggio.'</div>';

@@ -16,6 +16,9 @@
 	        redirect("/palestra/admin/gestisci_coach.php?error=campi_vuoti");
 	    }
 
+	    if(strtotime($data_nascita) > time())
+	        redirect("/palestra/admin/dashboard.php?error=data_futura");
+
 	    try{
 	        $stmtCheck = $pdo->prepare("SELECT id_coach FROM coach WHERE email = ? OR telefono = ?");
 	        $stmtCheck->execute([$email, $telefono]);

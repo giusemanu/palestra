@@ -10,7 +10,9 @@
         if(empty($data_inizio) || empty($data_fine) || empty($utente) || empty($coach)){
             redirect("/palestra/coach/dashboard.php?error=campi_vuoti");
         }
-        if ($data_fine < $data_inizio) {
+        if($data_fine < $data_inizio)
+            redirect("/palestra/coach/modifica_scheda.php?id_utente=$utente&error=date_invalide");
+		if(strtotime($data_nascita) > time()){
             redirect("/palestra/coach/modifica_scheda.php?id_utente=$utente&error=date_invalide");
         }else{
             try{
